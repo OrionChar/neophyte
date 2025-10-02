@@ -14,6 +14,11 @@
     "allowJs": true,
     "checkJs": true,
     "isolatedModules": true,
+    "baseUrl": ".",
+    "paths": {
+      "$shadcn": ["./src/shadcn"],
+      "$shadcn/*": ["./src/shadcn/*"]
+    },
     "moduleDetection": "force"
   },
   "include": ["src/**/*.ts", "src/**/*.js", "src/**/*.svelte"]
