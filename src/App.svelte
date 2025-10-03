@@ -59,8 +59,9 @@
     }
 </script>
 
-<main>
+<main class="neophyte">
     <ControlPanel
+        root={{class: ['absolute', 'bottom-10', 'right-[50%]', 'translate-x-[50%]']}}
         {isTraining}
         onSwitchNext={exerciseController.switchNext}
         onSwitchBack={exerciseController.switchBack}
@@ -68,5 +69,6 @@
         onAbort={exerciseController.abort}
         onRepetitionsChanged={exerciseController.changeCounter}
     />
-    <Statistic {trainings} onOpen={getTrainings} />
+    <!-- <Statistic class="neophyte__statistic" {trainings} onOpen={getTrainings} /> -->
 </main>
+

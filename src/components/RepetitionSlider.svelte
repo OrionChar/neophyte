@@ -30,7 +30,7 @@
     }
 </script>
 
-<label hidden={hidden}>
+<label hidden={hidden} class='relative'>
     <input 
         type="range"
         disabled={disabled} 
@@ -43,5 +43,5 @@
             onInput(value)
         }} 
     />
-    {value}
+    <span class="absolute bottom-4 left-0">{value}</span>
 </label>
