@@ -118,4 +118,8 @@
   body {
     @apply bg-background text-foreground;
   }
+  #three {
+    width: 100svw;
+    height: 100svh;
+  }
 }
