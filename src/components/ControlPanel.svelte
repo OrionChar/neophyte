@@ -7,7 +7,6 @@
     import ChevronRight from '@lucide/svelte/icons/chevron-right';
     import Ban from '@lucide/svelte/icons/ban';
     import Play from '@lucide/svelte/icons/play';
-    
 
     const {
         isTraining,

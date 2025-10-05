@@ -2,8 +2,7 @@
     import "./app.css";
     import ExerciseController from "./three/ExerciseController";
     import ControlPanel from "./components/ControlPanel.svelte";
-    import Statistic from "./components/Statistic.svelte";
-    import ObjectStores from "./db/ObjectStores";
+    import WorkoutHistory from "./components/WorkoutHistory.svelte";
     import TrainingHistoryStore from "./db/TrainingHistoryStore";
     import DBInitializer from "./db/DBInitializer";
     import type ITraining from "./models/ITraining";
@@ -69,6 +68,6 @@
         onAbort={exerciseController.abort}
         onRepetitionsChanged={exerciseController.changeCounter}
     />
-    <!-- <Statistic class="neophyte__statistic" {trainings} onOpen={getTrainings} /> -->
+    <WorkoutHistory {trainings} trigger={{class: 'absolute top-10 right-10'}} onOpenChange={((open) => {if (open) getTrainings()})} />
 </main>
 
