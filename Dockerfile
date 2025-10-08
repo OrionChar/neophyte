@@ -10,6 +10,6 @@ FROM nginx:mainline
 COPY --from=build /usr/src/neophyte/nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /usr/src/neophyte/dist /usr/share/nginx/html
 
-EXPOSE 80
+EXPOSE 83
 
 CMD [ "nginx", "-g", "daemon off;" ]
