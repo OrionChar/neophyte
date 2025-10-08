@@ -2,7 +2,7 @@ import { Font, FontLoader, GLTFLoader, type GLTF } from "three/examples/jsm/Addo
 
 export default class AssetLoader {
     public loadModel(): Promise<GLTF> {
-        const srcModel = '/3d-assets/Exercises.glb';
+        const srcModel = '/3d-assets/Exercises v2.glb';
         return new GLTFLoader().loadAsync(srcModel);
     }
 
