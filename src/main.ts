@@ -7,14 +7,20 @@ import initThree from './three/initThree';
 import type ExerciseController from './three/ExerciseController';
 import IExerciseBundle from './models/IExerciseBundl';
 import exercises from './data/exercises';
+import WebGL from 'three/addons/capabilities/WebGL.js';
 
-const assetLoader: AssetLoader = new AssetLoader();
-const mannequin: GLTF = await assetLoader.loadModel();
-const font: Font = await assetLoader.loadFont();
-const exercisesBundles = IExerciseBundle.bundle(exercises, mannequin.animations)
+let exerciseController: ExerciseController | null = null
 
-const three: HTMLCanvasElement = document.getElementById('three') as HTMLCanvasElement;
-const exerciseController: ExerciseController = initThree(three, exercisesBundles, mannequin, font);
+if ( WebGL.isWebGL2Available() ) {
+    const assetLoader: AssetLoader = new AssetLoader();
+    const mannequin: GLTF = await assetLoader.loadModel();
+    const font: Font = await assetLoader.loadFont();
+    const exercisesBundles = IExerciseBundle.bundle(exercises, mannequin.animations)
+    
+    const three: HTMLCanvasElement = document.createElement('canvas')
+    document.body.appendChild<HTMLCanvasElement>(three);
+    exerciseController = initThree(three, exercisesBundles, mannequin, font);
+}
 
 const app = mount(App, {
     target: document.getElementById('app')!,
