@@ -5,23 +5,26 @@
         hidden?: boolean
     } = $props()
 
-    let value = $state(10)
-    let minLimit = $state(1), maxLimit = $state(39)
+    let value = $state(8)
+    const absoluteMin = 1, absoluteMax = 256, initialMax = 32;
+    let minLimit = $state(absoluteMin), maxLimit = $state(initialMax)
 
     function rerange() {
-        const threshold = 0.94;
+        const threshold = 0.875;
+        const factor = 1.5
+
         const limitMax = maxLimit * threshold
         const isNearMaxLimit = value >= limitMax
+
         const limitMin = minLimit * (1 - threshold + 1)
         const isNearMinLimit = value <= limitMin
-        const factor = 1.5
 
         if (isNearMaxLimit) {
             minLimit = Math.floor(value / factor)
-            maxLimit = Math.floor(maxLimit * factor)
-        } else if (value > 1 && isNearMinLimit) {
-            minLimit = value > 39 ? Math.floor(minLimit / factor) : 1
-            maxLimit = Math.max(Math.floor(value / factor), 39)
+            maxLimit = Math.min(Math.floor(maxLimit * factor), absoluteMax)
+        } else if (isNearMinLimit) {
+            minLimit = value > initialMax ? Math.floor(minLimit / factor) : absoluteMin
+            maxLimit = Math.max(Math.floor(maxLimit / factor), initialMax)
         }
     }
 
