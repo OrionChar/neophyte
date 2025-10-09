@@ -25,6 +25,14 @@
         onRepetitionsChanged: (value: number) => void;
         root?: HTMLProps<"article", HTMLAttributes<any>>
     } = $props();
+
+    
+
+    const initialValue = 8
+    
+    $effect(() => {
+        onRepetitionsChanged(initialValue)
+	});
 </script>
 
 <article class={['flex justify-center items-end gap-3', root?.class]}>
@@ -34,6 +42,7 @@
     </div>
 
     <RepetitionSlider
+        {initialValue}
         disabled={isTraining}
         hidden={isTraining}
         onInput={onRepetitionsChanged}

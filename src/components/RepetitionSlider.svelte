@@ -1,11 +1,12 @@
 <script lang="ts">
-    const {onInput, disabled = false, hidden =  false}: {
-        onInput: (value: number) => void
+    const {onInput, initialValue, disabled = false, hidden =  false}: {
+        onInput: (value: number) => void,
+        initialValue: number,
         disabled?: boolean,
         hidden?: boolean
     } = $props()
 
-    let value = $state(8)
+    let value = $state(initialValue)
     const absoluteMin = 1, absoluteMax = 256, initialMax = 32;
     let minLimit = $state(absoluteMin), maxLimit = $state(initialMax)
 
