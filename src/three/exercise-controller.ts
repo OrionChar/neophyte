@@ -1,7 +1,7 @@
 import type ExercisesIterator from "./exercises-iterator";
 import type Player from "./player";
 import type SceneBuilder from "./scene-builder";
-import type IExercise from "../models/IExercise";
+import type IExercise from "../models/i-exercise";
 
 interface ExerciseControllerEventMap {
     'start': CustomEvent;

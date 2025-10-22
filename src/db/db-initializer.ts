@@ -1,5 +1,5 @@
 import { dbName, dbVersion } from "./consts"
-import TrainingHistoryStore from "./TrainingHistoryStore";
+import TrainingHistoryStore from "./training-history-store";
 
 export default class DBInitializer {    
     init(): IDBOpenDBRequest {

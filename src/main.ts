@@ -5,7 +5,7 @@ import type { GLTF, Font } from 'three/examples/jsm/Addons.js';
 import AssetLoader from './three/asset-loader';
 import initThree from './three/init-three';
 import type ExerciseController from './three/exercise-controller';
-import IExerciseBundle from './models/IExerciseBundl';
+import IExerciseBundle from './models/i-ixercise-bundl';
 import exercises from './data/exercises';
 import WebGL from 'three/addons/capabilities/WebGL.js';
 import setupScene from './three/setup-scene';

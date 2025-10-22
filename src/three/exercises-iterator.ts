@@ -1,6 +1,6 @@
 import type { AnimationClip } from "three";
-import type IExercise from "../models/IExercise";
-import type IExerciseBundle from "../models/IExerciseBundl";
+import type IExercise from "../models/i-exercise";
+import type IExerciseBundle from "../models/i-ixercise-bundl";
 
 type x = { exercise: IExercise, animation: AnimationClip }
 

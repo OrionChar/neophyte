@@ -5,7 +5,7 @@ import SceneBuilder from "./scene-builder";
 import Player from "./player";
 import type { Group, PerspectiveCamera, Scene } from "three";
 import type { Font, OrbitControls } from "three/examples/jsm/Addons.js";
-import type IExerciseBundle from "src/models/IExerciseBundl";
+import type IExerciseBundle from "src/models/i-ixercise-bundl";
 
 export default function setupScene(
     scene: Scene, 

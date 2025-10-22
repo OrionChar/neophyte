@@ -3,9 +3,9 @@
     import ExerciseController from "./three/exercise-controller";
     import ControlPanel from "./components/ControlPanel.svelte";
     import WorkoutHistory from "./components/WorkoutHistory.svelte";
-    import TrainingHistoryStore from "./db/TrainingHistoryStore";
-    import DBInitializer from "./db/DBInitializer";
-    import type ITraining from "./models/ITraining";
+    import TrainingHistoryStore from "./db/training-history-store";
+    import DBInitializer from "./db/db-initializer";
+    import type ITraining from "./models/i-training";
     import WebGLError from "./components/WebGLError.svelte";
 
     const {

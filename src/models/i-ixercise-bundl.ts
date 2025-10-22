@@ -1,5 +1,5 @@
 import type { AnimationClip } from "three";
-import type IExercise from "./IExercise";
+import type IExercise from "./i-exercise";
 import exercises from "../data/exercises";
 
 export default abstract class IExerciseBundle {

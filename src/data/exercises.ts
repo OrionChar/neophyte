@@ -1,4 +1,4 @@
-import type IExercise from "../models/IExercise"
+import type IExercise from "../models/i-exercise"
 
 const exercises: IExercise[] = [
     {

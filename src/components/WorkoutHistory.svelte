@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type ITraining from "../models/ITraining";
+    import type ITraining from "../models/i-training";
     import TrendingUp from '@lucide/svelte/icons/trending-up';
     import X from '@lucide/svelte/icons/x';
     import Button, { type ButtonProps } from "$shadcn/components/ui/button/button.svelte";

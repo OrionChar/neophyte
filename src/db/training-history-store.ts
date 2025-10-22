@@ -1,5 +1,5 @@
-import type IExercise from "../models/IExercise"
-import type ITraining from "../models/ITraining"
+import type IExercise from "../models/i-exercise"
+import type ITraining from "../models/i-training"
 
 export default class TrainingHistoryStore {
     constructor(private db: IDBDatabase) {}
