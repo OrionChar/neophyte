@@ -2,7 +2,7 @@ import Counter from './counter';
 import ExerciseController from "./exercise-controller";
 import ExercisesIterator from "./exercises-iterator";
 import SceneBuilder from "./scene-builder";
-import Player from "./player";
+import AnimationPlayer from "./animation-player";
 import type { Group, PerspectiveCamera, Scene } from "three";
 import type { Font, OrbitControls } from "three/examples/jsm/Addons.js";
 import type IExerciseBundle from "src/models/i-ixercise-bundl";
@@ -22,7 +22,7 @@ export default function setupScene(
     interior.setup(mannequin, location)
 
     const listExercises = new ExercisesIterator(exercises);
-	const player = new Player(mannequin, listExercises.getCurrentExercise().animation);
+	const player = new AnimationPlayer(mannequin, listExercises.getCurrentExercise().animation);
 	player.play()
 
     return {

@@ -1,6 +1,6 @@
 import { AnimationAction, AnimationClip, AnimationMixer, AnimationObjectGroup, Object3D } from "three";
 
-export default class Player {
+export default class AnimationPlayer {
     readonly animationMixer: AnimationMixer;
     private action: AnimationAction 
     

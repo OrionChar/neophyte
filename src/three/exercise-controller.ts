@@ -1,5 +1,5 @@
 import type ExercisesIterator from "./exercises-iterator";
-import type Player from "./player";
+import type AnimationPlayer from "./animation-player";
 import type SceneBuilder from "./scene-builder";
 import type IExercise from "../models/i-exercise";
 
@@ -10,7 +10,7 @@ interface ExerciseControllerEventMap {
 }
 
 export default class ExerciseController extends EventTarget {
-    constructor(private interior: SceneBuilder, private exercisesIterator: ExercisesIterator, private player: Player) {
+    constructor(private interior: SceneBuilder, private exercisesIterator: ExercisesIterator, private player: AnimationPlayer) {
         super()
     }
 
