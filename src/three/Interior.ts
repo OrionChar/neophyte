@@ -107,8 +107,16 @@ export default class Interior {
 
     public setupOrbitControl(domElement: HTMLElement): OrbitControls {
         const controls = new OrbitControls(this.camera, domElement);
+        controls.maxDistance = 3.2
+        controls.minDistance = 1.3
+        controls.minPolarAngle = Math.PI / 6
+        controls.maxPolarAngle = Math.PI / 2
+        controls.maxAzimuthAngle = Math.PI / 6
+        controls.minAzimuthAngle = 4 * Math.PI / 3
+        controls.target.set(0, 0.5, 0)
         controls.enableDamping = true; // for smooth motion
         controls.dampingFactor = 0.01;
+        controls.enablePan = false
 
         return controls
     }
