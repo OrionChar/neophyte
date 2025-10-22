@@ -18,6 +18,11 @@ export default class AssetLoader {
         return new GLTFLoader().loadAsync(srcModel);
     }
 
+    public loadInventory(): Promise<GLTF> {
+        const srcModel = '/3d-assets/horizon-bar.glb';
+        return new GLTFLoader().loadAsync(srcModel);
+    }
+
     private onError(error: unknown): void {
         console.error(error)
     }

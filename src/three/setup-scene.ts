@@ -14,12 +14,13 @@ export default function setupScene(
     exercises: IExerciseBundle[],
     mannequin: Group,
     location: Group,
+    inventory: Group,
     font: Font,
 ) {
     const counter = new Counter(font)
 
     const interior = new SceneBuilder(scene, camera, counter, orbit)
-    interior.setup(mannequin, location)
+    interior.setup(location, mannequin, inventory)
 
     const listExercises = new ExercisesIterator(exercises);
 	const player = new AnimationPlayer(mannequin, listExercises.getCurrentExercise().animation);

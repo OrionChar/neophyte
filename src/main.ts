@@ -18,10 +18,11 @@ if (WebGL.isWebGL2Available()) {
     const mannequin: GLTF = await assetLoader.loadModel();
     const font: Font = await assetLoader.loadFont();
     const location: GLTF = await assetLoader.loadLocation();
+    const inventory: GLTF = await assetLoader.loadInventory();
 
     const exercisesBundles = IExerciseBundle.bundle(exercises, mannequin.animations)
     const { scene, camera, orbit, renderer } = initThree();
-    const {exerciseController: controller, player} = setupScene(scene, camera, orbit, exercisesBundles, mannequin.scene, location.scene, font)
+    const {exerciseController: controller, player} = setupScene(scene, camera, orbit, exercisesBundles, mannequin.scene, location.scene, inventory.scene, font)
 
     exerciseController = controller
     

@@ -14,15 +14,36 @@ export default class SceneBuilder {
         this.numberRepetition = this.counter.create(10)
     }
 
-    public setup(mannequin: Group<Object3DEventMap>, gym: Group<Object3DEventMap>): void {
+    public setup(location: Group, mannequin: Group, inventory: Group): void {
         this.scene.background = new Color('#ffffff');
 
-        this.addLocation(gym)
+        this.addLocation(location)
+        this.addInventory(inventory)
         this.addMannequin(mannequin)
         this.addLighting();
         this.setupCounter();
         this.setupCamera();
         this.tuneOrbit();
+    }
+
+    private addInventory = (inventory: Group): void => {
+        const material = new MeshStandardMaterial({
+            color: 0xffffff,
+            roughness: 1,
+            metalness: 0.0,
+            emissive: 0
+        })
+
+        inventory.children.forEach(child => {
+            child.castShadow = true
+            child.receiveShadow = true
+            child.material = material
+        })
+
+        console.log(inventory);
+        
+
+        this.scene.add(inventory)
     }
 
     private addLighting = (): void => {
