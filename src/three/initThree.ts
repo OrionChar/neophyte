@@ -1,22 +1,12 @@
-import { Font, type GLTF } from 'three/examples/jsm/Addons.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import ExercisesIterator from './ExercisesIterator';
-import Interior from './Interior';
-import { Camera, Clock, PCFSoftShadowMap, PerspectiveCamera, Scene, WebGLRenderer } from 'three';
-import Counter from './Counter';
-import Player from './Player';
-import ExerciseController from './ExerciseController';
-import type IExerciseBundle from '../models/IExerciseBundl';
+import { PCFSoftShadowMap, PerspectiveCamera, Scene, WebGLRenderer } from 'three';
 
-export default function initThree(canvas: HTMLCanvasElement, exercises: IExerciseBundle[], mannequin: GLTF, font: Font, gym: GLTF): ExerciseController {
+export default function initThree() {
 	const scene = new Scene();
 	const camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-	const counter = new Counter(font)
-
-	const interior = new Interior(scene, camera, counter)
-	interior.setupScene(mannequin.scene, gym.scene)
-	interior.setupCamera()
+	const canvas: HTMLCanvasElement = document.createElement('canvas')
+	document.body.appendChild<HTMLCanvasElement>(canvas);
 
 	const renderer = new WebGLRenderer({ canvas, antialias: true });
 	renderer.shadowMap.enabled = true
@@ -26,24 +16,11 @@ export default function initThree(canvas: HTMLCanvasElement, exercises: IExercis
 
 	window.addEventListener('resize', () => onResize(camera, renderer));
 
-	const listExercises = new ExercisesIterator(exercises);
-	const player = new Player(mannequin.scene, listExercises.getCurrentExercise().animation);
-	player.play()
+	const orbitController = new OrbitControls(camera, canvas)
 
-	const orbitController = interior.setupOrbitControl(canvas)
-	const delta = new Clock();
-	render(scene, camera, renderer, orbitController, delta, player);
-
-	return new ExerciseController(interior, listExercises, player)
-}
-
-function render(scene: Scene, camera: Camera, renderer: WebGLRenderer, orbitController: OrbitControls, delta: Clock, player: Player): void {
-	requestAnimationFrame(() => render(scene, camera, renderer, orbitController, delta, player));
-
-	orbitController.update();
-	renderer.render(scene, camera);
-
-	player.animationMixer.update(delta.getDelta());
+	return {
+		scene, renderer, camera, orbit: orbitController, canvas
+	}
 }
 
 function onResize(camera: PerspectiveCamera, renderer: WebGLRenderer) {

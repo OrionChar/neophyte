@@ -2,24 +2,27 @@ import { Scene, PerspectiveCamera, Color, AmbientLight, Group, type Object3DEven
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import type Counter from "./Counter";
 
-export default class Interior {
+export default class SceneBuilder {
     private numberRepetition: Mesh;
 
     constructor(
         private scene: Scene,
         private camera: PerspectiveCamera,
-        private counter: Counter
+        private counter: Counter,
+        private orbit: OrbitControls
     ) {
         this.numberRepetition = this.counter.create(10)
     }
 
-    public setupScene(mannequin: Group<Object3DEventMap>, gym: Group<Object3DEventMap>): void {
+    public setup(mannequin: Group<Object3DEventMap>, gym: Group<Object3DEventMap>): void {
         this.scene.background = new Color('#ffffff');
 
-        this.addGym(gym)
+        this.addLocation(gym)
         this.addMannequin(mannequin)
         this.addLighting();
-        this.setupCounter()
+        this.setupCounter();
+        this.setupCamera();
+        this.tuneOrbit();
     }
 
     private addLighting = (): void => {
@@ -72,8 +75,8 @@ export default class Interior {
         this.scene.add(mannequin)
     }
 
-    private addGym = (gym: Group): void => {
-        gym.castShadow = true
+    private addLocation = (location: Group): void => {
+        location.castShadow = true
 
         const material = new MeshStandardMaterial({
             color: 0xe0e0e0,
@@ -82,17 +85,21 @@ export default class Interior {
             emissive: 0
         })
 
-        gym.children.forEach(mesh => {
+        location.children.forEach(mesh => {
             mesh.material = material
             mesh.castShadow = true
             mesh.receiveShadow = true
         })
 
-        this.scene.add(gym);
+        this.scene.add(location);
     }
 
     private setupCounter() {
         this.scene.add(this.numberRepetition)
+    }
+
+    private setupCamera(): void {
+        this.camera.position.set(-1.5, 1, 2);
     }
 
     public updateCounter(value: number): void {
@@ -101,23 +108,16 @@ export default class Interior {
         this.setupCounter()
     }
 
-    public setupCamera(): void {
-        this.camera.position.set(-1.5, 1, 2);
-    }
-
-    public setupOrbitControl(domElement: HTMLElement): OrbitControls {
-        const controls = new OrbitControls(this.camera, domElement);
-        controls.maxDistance = 3.2
-        controls.minDistance = 1.3
-        controls.minPolarAngle = Math.PI / 6
-        controls.maxPolarAngle = Math.PI / 2
-        controls.maxAzimuthAngle = Math.PI / 6
-        controls.minAzimuthAngle = 4 * Math.PI / 3
-        controls.target.set(0, 0.5, 0)
-        controls.enableDamping = true; // for smooth motion
-        controls.dampingFactor = 0.01;
-        controls.enablePan = false
-
-        return controls
+    private tuneOrbit() {
+        this.orbit.maxDistance = 3.2
+        this.orbit.minDistance = 1.3
+        this.orbit.minPolarAngle = Math.PI / 6
+        this.orbit.maxPolarAngle = Math.PI / 2
+        this.orbit.maxAzimuthAngle = Math.PI / 6
+        this.orbit.minAzimuthAngle = 4 * Math.PI / 3
+        this.orbit.target.set(0, 0.5, 0)
+        this.orbit.enableDamping = true; // for smooth motion
+        this.orbit.dampingFactor = 0.01;
+        this.orbit.enablePan = false
     }
 }
