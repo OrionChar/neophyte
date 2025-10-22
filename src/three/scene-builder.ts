@@ -1,6 +1,6 @@
 import { Scene, PerspectiveCamera, Color, AmbientLight, Group, type Object3DEventMap, Mesh, Vector3, MeshStandardMaterial, DirectionalLight, SpotLight } from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import type Counter from "./Counter";
+import type Counter from "./counter";
 
 export default class SceneBuilder {
     private numberRepetition: Mesh;

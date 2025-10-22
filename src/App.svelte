@@ -1,6 +1,6 @@
 <script lang="ts">
     import "./app.css";
-    import ExerciseController from "./three/ExerciseController";
+    import ExerciseController from "./three/exercise-controller";
     import ControlPanel from "./components/ControlPanel.svelte";
     import WorkoutHistory from "./components/WorkoutHistory.svelte";
     import TrainingHistoryStore from "./db/TrainingHistoryStore";

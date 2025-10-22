@@ -1,5 +1,5 @@
-import type ExercisesIterator from "./ExercisesIterator";
-import type Player from "./Player";
+import type ExercisesIterator from "./exercises-iterator";
+import type Player from "./player";
 import type SceneBuilder from "./scene-builder";
 import type IExercise from "../models/IExercise";
 

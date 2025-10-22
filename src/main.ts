@@ -2,9 +2,9 @@ import { mount } from 'svelte'
 import './app.css'
 import App from './App.svelte'
 import type { GLTF, Font } from 'three/examples/jsm/Addons.js';
-import AssetLoader from './three/AssetLoader';
-import initThree from './three/initThree';
-import type ExerciseController from './three/ExerciseController';
+import AssetLoader from './three/asset-loader';
+import initThree from './three/init-three';
+import type ExerciseController from './three/exercise-controller';
 import IExerciseBundle from './models/IExerciseBundl';
 import exercises from './data/exercises';
 import WebGL from 'three/addons/capabilities/WebGL.js';

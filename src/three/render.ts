@@ -1,4 +1,4 @@
-import type Player from "./Player";
+import type Player from "./player";
 import type { Scene, Camera, WebGLRenderer } from "three";
 import { Clock } from "three";
 import type { OrbitControls } from "three/examples/jsm/Addons.js";
