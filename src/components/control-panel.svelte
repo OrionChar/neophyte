@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { HTMLProps } from "node_modules/svelte/svelte-html";
     import type { HTMLAttributes } from "svelte/elements";
-    import RepetitionSlider from "./RepetitionSlider.svelte";
+    import RepetitionSlider from "./repetition-slider.svelte";
     import {Button} from "$shadcn/components/ui/button/index";
     import ChevronLeft from '@lucide/svelte/icons/chevron-left';
     import ChevronRight from '@lucide/svelte/icons/chevron-right';
