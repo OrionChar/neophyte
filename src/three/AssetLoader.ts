@@ -7,7 +7,7 @@ export default class AssetLoader {
     }
 
     public loadFont(): Promise<Font> {
-        const srcFont = '/fonts/Roboto_Regular.json';
+        const srcFont = '/fonts/oswald-medium-regular-digits-only-v2.json';
         return new Promise<Font>((resolve) => {
             new FontLoader().load(srcFont, resolve, undefined, this.onError);
         })
