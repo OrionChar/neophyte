@@ -13,6 +13,11 @@ export default class AssetLoader {
         })
     }
 
+    public loadGym(): Promise<GLTF> {
+        const srcModel = '/3d-assets/gym.glb';
+        return new GLTFLoader().loadAsync(srcModel);
+    }
+
     private onError(error: unknown): void {
         console.error(error)
     }
