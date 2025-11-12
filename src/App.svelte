@@ -55,6 +55,7 @@
         request.onsuccess = function () {
             if (request.result) {
                 trainings = request.result; // array of books with price=10
+                trainings.reverse()
             } else {
                 console.log("No such books");
             }
