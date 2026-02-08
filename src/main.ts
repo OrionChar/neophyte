@@ -1,7 +1,6 @@
 import { mount } from 'svelte'
 import './app.css'
 import App from './App.svelte'
-import type { GLTF, Font } from 'three/examples/jsm/Addons.js';
 import AssetLoader from './three/asset-loader';
 import initThree from './three/init-three';
 import type ExerciseController from './three/exercise-controller';
@@ -10,23 +9,33 @@ import exercises from './data/exercises';
 import WebGL from 'three/addons/capabilities/WebGL.js';
 import setupScene from './three/setup-scene';
 import render from './three/render';
+import Preloader from './preloader';
 
 let exerciseController: ExerciseController | null = null
 
 if (WebGL.isWebGL2Available()) {
     const assetLoader: AssetLoader = new AssetLoader();
-    const mannequin: GLTF = await assetLoader.loadModel();
-    const font: Font = await assetLoader.loadFont();
-    const location: GLTF = await assetLoader.loadLocation();
-    const inventory: GLTF = await assetLoader.loadInventory();
+
+    const [
+        mannequin,
+        font,
+        location,
+        inventory,
+    ] = await Promise.all([
+        assetLoader.loadModel(),
+        assetLoader.loadFont(),
+        assetLoader.loadLocation(),
+        assetLoader.loadInventory(),
+    ])
 
     const exercisesBundles = IExerciseBundle.bundle(exercises, mannequin.animations)
     const { scene, camera, orbit, renderer } = initThree();
-    const {exerciseController: controller, player} = setupScene(scene, camera, orbit, exercisesBundles, mannequin.scene, location.scene, inventory.scene, font)
+    const { exerciseController: controller, player } = setupScene(scene, camera, orbit, exercisesBundles, mannequin.scene, location.scene, inventory.scene, font)
 
     exerciseController = controller
-    
+
     render(scene, camera, renderer, orbit, player);
+    new Preloader().destroy();
 }
 
 const app = mount(App, {

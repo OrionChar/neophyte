@@ -1,18 +1,24 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" as="style" href="./src/preloader.css">
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
-    <!-- Add when logo will created -->
     <link rel="apple-touch-icon" href="/logo-apple-touch-icon.png" sizes="180x180">
     <link rel="mask-icon" href="/logo.svg" color="#FFFFFF">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="The Service of The Biomechanism">
     <title>Neophyte</title>
     <meta name="theme-color" content="#ffffff">
-  </head>
-  <body>
+</head>
+
+<body>
+    <div id="preloader" class="preloader-overlay">
+        <div class="loader"></div>
+    </div>
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
-  </body>
+</body>
+
 </html>
